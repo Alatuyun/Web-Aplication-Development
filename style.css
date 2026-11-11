@@ -1,0 +1,93 @@
+/* CSS Reset dasar untuk meratakan margin, padding, dan box-sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Variabel warna global (CSS Custom Properties) */
+:root {
+    --color-primary: #30B4F6;
+    --color-accent: #056688;
+    --color-bg: #F3F7F8;
+    --color-text: #1A2B3C;
+}
+
+/* Pengaturan dasar untuk elemen body */
+body {
+    font-family: Arial, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+/* Kerangka Utama Halaman dengan CSS Grid (Mobile-First) */
+.dashboard {
+    display: grid;
+    grid-template-areas:
+        "topbar"
+        "content";
+    min-height: 100vh;
+}
+
+/* Pengaturan visibilitas dan area grid komponen */
+.sidebar {
+    display: none; 
+}
+
+.topbar {
+    grid-area: topbar; 
+}
+
+.content {
+    grid-area: content; 
+}
+/* Layout baris kartu statistik menggunakan Flexbox */
+.stat-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.stat-card {
+    flex: 1 1 200px;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Tablet dan ukuran di atasnya (min-width: 600px) */
+@media (min-width: 600px) {
+    .stat-card {
+        flex: 1 1 45%;
+    }
+}
+
+/* Desktop dan ukuran di atasnya (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .dashboard {
+        grid-template-columns: 240px 1fr;
+        grid-template-areas:
+            "sidebar topbar"
+            "sidebar content";
+    }
+    
+    .sidebar { 
+        display: block; 
+    }
+    
+    .stat-card { 
+        flex: 1 1 200px; 
+    }
+}
+
+.chart-placeholder {
+    background: white;
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #666;
+    border: 2px dashed #ccc;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
